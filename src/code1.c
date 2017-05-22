@@ -20,6 +20,34 @@ void permut(int vus[], int nbVus, int nonVus[], int nbNonVus){
     Postcondition : affiche tous les tours commençant par vus[0..nbVus-1] et se terminant par les sommets de nonVus[0..nbNonVus-1] (dans tous les ordres possibles)
      */
     // INSEREZ VOTRE CODE ICI !
+    
+    if (nbNonVus==0){  
+		printSolution(vus,nbVus);
+	}
+	int v[nbVus+1], nV[nbNonVus];
+	int i;
+	for(i=0;i<nbVus;i++){
+		v[i]=vus[i];
+
+	}
+	for(i=0;i<nbNonVus;i++){
+		nV[i]=nonVus[i];
+
+	}
+	
+	for(i=0; i<nbNonVus; i++){
+		v[nbVus]=nonVus[i];
+	
+		nV[i]=nonVus[nbNonVus-1];
+		
+		permut(v,nbVus+1,nV,nbNonVus-1);
+		
+		nV[i]=nonVus[i];
+
+		
+	}
+	
+	
 }
 
 int main(){
