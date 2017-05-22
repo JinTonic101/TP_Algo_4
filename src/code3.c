@@ -39,6 +39,38 @@ int permut(int vus[], int nbVus, int nonVus[], int nbNonVus, int longueur, int p
          S'il existe un circuit de C de longueur inferieure a borne, alors retourne la longueur du plus petit circuit de C, sinon retourne borne
      */
     // INSEREZ VOTRE CODE ICI !
+    
+    if(nbNonVus==0){
+        longueur +=  cout[vus[nbVus-1]] [0];
+        if(longueur<pcc){
+			pcc=longueur;
+		}
+        //return pcc;
+    }
+
+	int v[nbVus+1], nV[nbNonVus];
+	int i;
+	for(i=0;i<nbVus;i++){
+		v[i]=vus[i];
+
+	}
+	for(i=0;i<nbNonVus;i++){
+		nV[i]=nonVus[i];
+
+	}
+	
+	for(i=0; i<nbNonVus; i++){
+		v[nbVus]=nonVus[i];
+	
+		nV[i]=nonVus[nbNonVus-1];
+		int l=longueur+cout[v[nbVus-1]][v[nbVus]];
+		pcc=permut(v,nbVus+1,nV,nbNonVus-1,l,pcc);
+		
+		nV[i]=nonVus[i];
+
+		
+	}
+	return pcc;
 }
 
 int main(){
